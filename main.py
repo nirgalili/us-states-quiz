@@ -41,19 +41,13 @@ def run_main():
 
         # print(user_guesses_list)
 
-    missing_states = []
-    for state in states_list:
-        if state not in user_guesses_list:
-            missing_states.append(state)
-
+    missing_states = [state for state in states_list if state not in user_guesses_list]    
     data_dict = {
         "State": missing_states
     }
 
     data = pandas.DataFrame(data_dict)
     data.to_csv("missing_states.csv")
-
-
 
     screen.exitonclick()
 
